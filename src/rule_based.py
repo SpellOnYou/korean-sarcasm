@@ -7,6 +7,7 @@ def rule_based_comparison(x_train, y_train, x_test, y_test, vocab_filename, verb
     # vocab = set(' '.join([x.lower() for x in x_train]).split()) # this includes all words in the train set
     counts = {k: [0, 0] for k in vocab}
     for tw, y in zip(x_train, y_train):
+        print('this is tweet {}'.format(type(tw)))
         for word in tw.split(): #phrase based
         # for word in tw: #char based
             # word = word.lower()
@@ -63,18 +64,21 @@ def load_csv(file_path, value):
     attr = df[value]
     return attr
 
-test_tweets = load_csv(path +'/res/datasets/jiwon/50_true_test.csv', 'text')
-train_tweets = load_csv(path + '/res/datasets/jiwon/50_true_train.csv', 'text')
+#TODO: Dependent on data, make it clousure
+
+train_tweets = load_csv(path + '/res/datasets/jiwon/unbiased_tokens_train.csv', 'tokens')
+test_tweets = load_csv(path + '/res/datasets/jiwon/unbiased_tokens_test.csv', 'tokens')
 
 # train_tweets = load_csv(data_path + tokens_filename + train_filename)
 # test_tweets = load_csv(data_path + tokens_filename + test_filename)
 
 # Load the labels
-train_labels = [int(l) for l in load_csv(path + "/res/datasets/jiwon/50_true_train.csv", 'label')]
-test_labels = [int(l) for l in load_csv(path + "/res/datasets/jiwon/50_true_test.csv", 'label')]
+train_labels = [int(l) for l in load_csv(path + "/res/datasets/jiwon/unbiased_labels_train.csv", 'label')]
+test_labels = [int(l) for l in load_csv(path + "/res/datasets/jiwon/unbiased_labels_test.csv", 'label')]
 
 # A rule-based approach used here to analyse the key-features that are actually learnt in a (non-)sarcastic context
 utils.print_model_title("Rule-based analysis")
+
 #Todo;  make this value to the function
 vocab_filename = path + "/res/vocabulary/vocabulary.txt"
 
