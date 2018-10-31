@@ -1,4 +1,4 @@
-### Pikasm : korean sarcasm detector on twitter
+### Pikasm : korean sarcasm detector on twitter : And i love pikachu
 
 [<img src="https://media1.tenor.com/images/03437a3a7a4a9084caecf563850e3569/tenor.gif?itemid=9054712">](https://media1.tenor.com/)
 * All of the source code 
