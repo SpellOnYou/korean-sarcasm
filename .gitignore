@@ -1,6 +1,14 @@
-*
-!.gitignore
-!res/datasets/jiwon/*
-!res/data_processing.py
-!*/extract_baseline_features.py
-!*/rule_based.py
+/images/*
+/models/*
+/plots/*
+/res/*
+!/res/datasets/
+/res/datasets/*
+!/res/datasets/jiwon/
+# this is wrong git condition !/res/datasets/jiwon*
+/src/*
+
+
+/stats/original_vs_grammatical.txt
+project_log.txt
+README_cp.md
