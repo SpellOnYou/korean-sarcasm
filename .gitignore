@@ -1,6 +1,6 @@
 *
 !.gitignore
-!*/datasets/jiwon/*
-!*/data_processing.py
+!res/datasets/jiwon/*
+!res/data_processing.py
 !*/extract_baseline_features.py
 !*/rule_based.py
