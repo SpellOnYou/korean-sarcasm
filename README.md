@@ -1,15 +1,14 @@
 ### Pikasm : korean sarcasm detector on twitter : And i love pikachu
 
 [<img src="https://media1.tenor.com/images/03437a3a7a4a9084caecf563850e3569/tenor.gif?itemid=9054712">](https://media1.tenor.com/)
-* All of the source code 
 
-### Overview
+* Pikasm is compatible with: Python 2.7-3.6.
 
-[source code](/src)
+#### Overview
 
-[resources](/res)
-
-[statistics of model](/stats)
+* [source code](/src)
+* [resources](/res)
+* [statistics of model](/stats)
 
 #### List of requirements
 * [Python](https://www.python.org/downloads/) 3.5
