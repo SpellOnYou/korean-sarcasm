@@ -25,7 +25,7 @@ SHUFFLE = False
 
 # Prepare data for visualizations (attention and lstm)
 def prepare_data(shuffle=False, labels_to_categorical=True):
-    path = os.getcwd()[:os.getcwd().rfind("/")]
+    path = os.getcwd() # run the source code from parent folder
     to_write_filename = path + "/stats/data_prep_for_lstm_visualization.txt"
     utils.initialize_writer(to_write_filename)
 
@@ -34,7 +34,7 @@ def prepare_data(shuffle=False, labels_to_categorical=True):
     tokens_filename = "tokens_" #"clean_original_"     # other types of tokens to experiment with in /res/tokens/
     labels_filename = "labels_"
     
-    data_path = path + "/res/datasets/jiwon/unbiased_"
+    data_path = path + "sarcasm-korean/res/datasets/jiwon/unbiased_"
     # data_path = path + "/res/tokens/tokens_"
 
     # Load the data
