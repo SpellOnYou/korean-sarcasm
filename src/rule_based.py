@@ -1,4 +1,4 @@
-import os, utils
+import utils
 import data_processing as data_proc
 
 # Make a simple analysis of the key-features picked by models trained on embeddings (works for both emojis and words)
@@ -7,15 +7,19 @@ def rule_based_comparison(x_train, y_train, x_test, y_test, vocab_filename, verb
     # vocab = set(' '.join([x.lower() for x in x_train]).split()) # this includes all words in the train set
     counts = {k: [0, 0] for k in vocab}
     for tw, y in zip(x_train, y_train):
-        print('this is tweet {}'.format(type(tw)))
-        for word in tw.split(): #phrase based
-        # for word in tw: #char based
-            # word = word.lower()
-            if word in vocab:
-                if y == 0:
-                    counts[word][0] += 1
-                else:
-                    counts[word][1] += 1
+        # print('this is tweet {} : data is {} and label is {}'.format(type(tw), tw, y))
+        try:
+            for word in tw.split(): #phrase based
+            # for word in tw: #char based
+                # word = word.lower()
+                if word in vocab:
+                    if y == 0:
+                        counts[word][0] += 1
+                    else:
+                        counts[word][1] += 1
+        except AttributeError: #when text was composed of #반어법 only/
+            continue
+        
 
     # Calculate the relative weight of each word, based on the sarcastic/non-sarcastic tweets that it appears
     weight = dict.fromkeys([k for k in counts.keys()], 0)
@@ -59,30 +63,30 @@ data_path = path + "/res/tokens/tokens_"
 # Load the data
 import pandas as pd
 
-def load_csv(file_path, value):
-    df = pd.read_csv(file_path)
-    attr = df[value]
-    return attr
+
 
 #TODO: Dependent on data, make it clousure
 
-train_tweets = load_csv(path + '/res/datasets/jiwon/unbiased_tokens_train.csv', 'tokens')
-test_tweets = load_csv(path + '/res/datasets/jiwon/unbiased_tokens_test.csv', 'tokens')
+train_tweets = utils.load_csv(path + '/res/datasets/jiwon/unbiased_tokens_train.csv', 'tokens')
+test_tweets = utils.load_csv(path + '/res/datasets/jiwon/unbiased_tokens_test.csv', 'tokens')
 
 # train_tweets = load_csv(data_path + tokens_filename + train_filename)
 # test_tweets = load_csv(data_path + tokens_filename + test_filename)
 
 # Load the labels
-train_labels = [int(l) for l in load_csv(path + "/res/datasets/jiwon/unbiased_labels_train.csv", 'label')]
-test_labels = [int(l) for l in load_csv(path + "/res/datasets/jiwon/unbiased_labels_test.csv", 'label')]
+train_labels = [int(l) for l in utils.load_csv(path + "/res/datasets/jiwon/unbiased_labels_train.csv", 'label')]
+test_labels = [int(l) for l in utils.load_csv(path + "/res/datasets/jiwon/unbiased_labels_test.csv", 'label')]
 
 # A rule-based approach used here to analyse the key-features that are actually learnt in a (non-)sarcastic context
 utils.print_model_title("Rule-based analysis")
 
 #Todo;  make this value to the function
+# vocab_filename = path + "/res/vocabulary/vocabulary_char.txt"
 vocab_filename = path + "/res/vocabulary/vocabulary.txt"
 
-rule_based_comparison(train_tweets, train_labels, test_tweets, test_labels, vocab_filename, verbose=True)
+# def rule_based_comparison(x_train, y_train, x_test, y_test, vocab_filename, verbose=True):
+rule_based_comparison(x_train=train_tweets, y_train=train_labels, x_test=test_tweets, y_test=test_labels,
+                      vocab_filename=vocab_filename, verbose=True)
 
 
 print('Rule-based model, proportion is 1:1 \nTrain True : {}  and False : {}'

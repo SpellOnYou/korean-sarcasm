@@ -1,10 +1,7 @@
 from nltk.tokenize import TweetTokenizer, RegexpTokenizer
-from nltk.stem.wordnet import WordNetLemmatizer
 from nltk import ngrams, pos_tag
 from collections import Counter
 import numpy as np
-import vocab_helpers as helper
-
 
 def count_apparitions(tokens, list_to_count_from):
     total_count = 0.0
@@ -23,7 +20,6 @@ def get_sent_words(*args):
 
 
 def get_sentiment_features(train_data):
-    
     laughter = user_mentions = negations = affirmatives \
         = punctuation = emojis = tweet_len_ch = hashtags = 0
     neg = get_sent_words()['negative']

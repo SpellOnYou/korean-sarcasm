@@ -284,7 +284,10 @@ def build_vocabulary(vocab_filename, lines, minimum_occurrence=1):
         print("Building vocabulary...")
         vocabulary = Counter()
         for line in lines:
-            vocabulary.update([l.lower() for l in line.split() if l not in stopwords])
+            try:
+                vocabulary.update([l.lower() for l in line.split() if l not in stopwords])
+            except AttributeError:
+                continue
         print("The top 10 most common words: ", vocabulary.most_common(10))
         # Filter all words that appear too rarely or too frequently to be conclusive
         vocabulary = {key: vocabulary[key] for key in vocabulary
