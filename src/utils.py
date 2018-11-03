@@ -677,10 +677,9 @@ class writer:
 
 
 def initialize_writer(file_path):
-	# dir_path = file_path.replace(file_path.split('/')[-1] ,'')
-		dir_path = path
-		if not os.path.exists(dir_path):
-				os.makedirs(dir_path)
-		fout = open(file_path, 'a')
-		sys.stdout = writer(sys.stdout, fout)
-		print("\n\n > Current date and time: %s\n" % str(datetime.datetime.now()))
+	dir_path = file_path.replace(file_path.split('/')[-1] ,'')
+	if not os.path.exists(dir_path):
+		os.makedirs(dir_path)
+	fout = open(file_path, 'a')
+	sys.stdout = writer(sys.stdout, fout)
+	print("\n\n > Current date and time: %s\n" % str(datetime.datetime.now()))
