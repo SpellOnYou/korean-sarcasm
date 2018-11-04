@@ -76,6 +76,7 @@ def build_emoji_sentiment_dictionary():
 
 # Extract each tweet's emojis - obv. it's just a brute force solution (so, it's slow) but works in ALL cases
 def extract_emojis(tweets):
+    tweets = str(tweets)
     emojis = []
     for tw in tweets:
         tw_emojis = []

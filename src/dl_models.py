@@ -296,12 +296,12 @@ def run_dl_analysis(train_tweets, test_tweets, y_train, y_test, path, shuffle=Tr
 
 
 if __name__ == "__main__":
-    path = os.getcwd()[:os.getcwd().rfind('/')]
+    path = os.getcwd() # run the source code from parent folder
     to_write_filename = path + '/stats/dnn_models_analysis.txt'
     utils.initialize_writer(to_write_filename)
 
     # Load the train and test sets for the selected dataset
-    dataset = "ghosh"
+    dataset = "jiwon"
     train_data, _, train_labels, test_data, _, test_labels = data_proc.get_dataset(dataset)
 
     # Alternatively, if other experiments with the data are to be made (on Ghosh's dataset)

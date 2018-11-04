@@ -257,6 +257,7 @@ def encode_text_as_word_indexes(train_tweets, test_tweets, max_num_words=None, l
 
 # Build random vector mappings of a vocabulary
 def build_random_word2vec(tweets, embedding_dim=100, variance=1):
+		tweets = str(tweets)
 		print("\nBuilding random vector of mappings with dimension %d..." % embedding_dim)
 		word2vec_map = {}
 		seed(1457873)
