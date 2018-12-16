@@ -3,26 +3,37 @@ from collections import Counter
 from nltk.stem.wordnet import WordNetLemmatizer
 from nltk.corpus import words
 import numpy as np
+import pandas as pd
 import emoji
 import utils
-from vocab_helpers import contractions, implicit_emoticons, slang, \
-    wikipedia_emoticons, emotiocons_to_emojis
+
+# from vocab_helpers import contractions, implicit_emoticons, slang, \
+#     wikipedia_emoticons, emotiocons_to_emojis
 
 # path = os.getcwd()[:os.getcwd().rfind('/')]
 path = '/Users/hapkim/Desktop/Sarcasm-Detection'
 dict_filename = "word_list.txt"
 word_filename = "word_list_freq.txt"
 
+def get_morphems(morpheme):
+    mp = morpheme.split(';')
+    out_list = []
+    for i in mp:
+        out = re.split('/|#', i)
+        out_list.append(out)
+    word = ''.join([i[0].strip() for i in out_list])
+    pos = '/'.join([i[1].strip() for i in out_list])
+    return({'word':word, 'pos':pos})
 
-def build_subj_dicionary(lines):
+def build_subj_dicionary(df):
     subj_dict = dict()
-    for line in lines:
-        splits = line.split(' ')
-        if len(splits) == 6:
-            word = splits[2][6:]        # the word analyzed
-            word_type = splits[0][5:]   # weak or strong subjective
-            pos = splits[3][5:]         # part of speech: noun, verb, adj, adv or anypos
-            polarity = splits[5][14:]   # its polarity: can be positive, negative or neutral
+    for line in range(len(df)):
+        if df.iloc[line]['tag_type'] == 'Seed':
+            word_pos_dict = get_morphems(df.iloc[line]['morphemes'])
+            word = word_pos_dict['word']
+            pos = word_pos_dict['pos'] # part of speech: noun, verb, adj, adv or anypos
+            word_type = df.iloc[line]['subjectivity-polarity']   # weak or strong subjective
+            polarity = df.iloc[line]['polarity']   # its polarity: can be positive, negative or neutral
             new_dict_entry = {pos: [word_type, polarity]}
             if word in subj_dict.keys():
                 subj_dict[word].update(new_dict_entry)
@@ -30,9 +41,9 @@ def build_subj_dicionary(lines):
                 subj_dict[word] = new_dict_entry
     return subj_dict
 
-
 def get_subj_lexicon():
-    lexicon = utils.load_file(path + "/res/subjectivity_lexicon.tff")
+    lexicon = pd.read_csv(path + "/res/subjectivity_lexicon.csv")
+    # lexicon = utils.load_csv(path + "/res/subjectivity_lexicon.csv")
     subj_dict = build_subj_dicionary(lexicon)
     return subj_dict
 
@@ -779,17 +790,19 @@ def get_clean_dl_data(train_filename, test_filename, word_list):
     return clean_train_tweets, train_indices, clean_test_tweets, test_indices, len(vocabulary)
 
 
-def get_dataset(dataset):
-    data_path = path + "/res/datasets/" + dataset + "/"
-    train_tweets = utils.load_file(data_path + "tokens_train.txt")
-    test_tweets = utils.load_file(data_path + "tokens_test.txt")
-    train_pos = utils.load_file(data_path + "pos_train.txt")
-    test_pos = utils.load_file(data_path + "pos_test.txt")
-    train_labels = [int(l) for l in utils.load_file(data_path + "labels_train.txt")]
-    test_labels = [int(l) for l in utils.load_file(data_path + "labels_test.txt")]
+def get_dataget_dataset(dataset_maker, splt="tokens"):
+    if splt is not "tokens":
+        splt = "jaso"
+    data_path = path + "/res/datasets/" + dataset_maker + "/"
+    train_tweets = utils.load_csv(data_path + "unbiased_" + splt + "_train.csv")
+    test_tweets = utils.load_csv(data_path + "unbiased_" + splt + "_test.csv")
+    # train_pos = utils.load_file(data_path + "pos_train.txt")
+    # test_pos = utils.load_file(data_path + "pos_test.txt")
+    train_labels = [int(l) for l in utils.load_csv(data_path + "unbiased_labels_train.csv", "label")]
+    test_labels = [int(l) for l in utils.load_csv(data_path + "unbiased_labels_test.csv","label")]
     print("Size of the train set: ", len(train_labels))
     print("Size of the test set: ", len(test_labels))
-    return train_tweets, train_pos, train_labels, test_tweets, test_pos, test_labels
+    return train_tweets, train_labels, test_tweets, test_labels
 
 
 if __name__ == '__main__':

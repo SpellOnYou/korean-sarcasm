@@ -21,10 +21,12 @@ def load_file(filename):
 		file.close()
 		return text.strip().split("\n")
 
-def load_csv(file_path, value):
+def load_csv(file_path, *value):
 		df = pd.read_csv(file_path)
-		attr = df[value]
-		return attr
+		if value:
+			attr = df[value[0]]
+			return attr
+		return df
 
 def save_file(lines, filename):
 		data = '\n'.join(lines)
@@ -276,7 +278,7 @@ def load_vectors(filename='glove.6B.100d.txt'):
 		if 'emoji' in filename:
 				f = open(path + '/models/emoji2vec/' + filename)
 		else:   # by default, load the GLoVe embeddings
-				f = open(path + '/res/glove/' + filename)
+			f = open(path + '/res/glove/' + filename)
 		for line in f:
 				values = line.split()
 				word = values[0]

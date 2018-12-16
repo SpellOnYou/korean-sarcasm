@@ -1,6 +1,7 @@
 from nltk.tokenize import TweetTokenizer, RegexpTokenizer
 from nltk import ngrams, pos_tag
 from collections import Counter
+import pandas as pd
 import numpy as np
 
 def count_apparitions(tokens, list_to_count_from):

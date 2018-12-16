@@ -222,7 +222,7 @@ def dnn_options(name):
     }[name]
 
 
-def run_dl_analysis(train_tweets, test_tweets, y_train, y_test, path, shuffle=True,
+def run_dl_analysis(train_tweets, test_tweets, y_train, y_test, train_labels, path, shuffle=True,
                     max_tweet_length=40, emb_type='glove', trainable=True, plot=True,
                     dnn_models=None, epochs=50, batch_size=32, embedding_dim=300, hidden_units=256, dropout=0.5):
     if shuffle:
@@ -309,7 +309,7 @@ if __name__ == "__main__":
     """
     train_filename = "train_sample.txt"
     test_filename = "test_sample.txt"
-    
+
     train_data = utils.load_file(path + "/res/tokens/tokens_clean_original_" + train_filename)
     test_data = utils.load_file(path + "/res/tokens/tokens_clean_original_" + test_filename)
 
@@ -322,16 +322,16 @@ if __name__ == "__main__":
     y_test = test_labels
 
     # Make and print the settings for the DL model
-    max_len = utils.get_max_len_info(train_data)
-    emb_types = ['keras', 'glove', 'random']
-    trainable = True
-    plot = True
-    shuffle = False
-    epochs = 50
-    batch_size = 256
-    embedding_dim = 300
-    hidden_units = 256
-    dropout = 0.3
+	max_len = utils.get_max_len_info(train_data)
+	emb_types = ['keras', 'glove', 'random']
+	trainable = True
+	plot = True
+	shuffle = False
+	epochs = 50
+	batch_size = 256
+	embedding_dim = 300
+	hidden_units = 256
+	dropout = 0.3
 
     for emb_type in emb_types:
         utils.print_settings(max_len, embedding_dim, hidden_units, epochs, batch_size, dropout, emb_type, trainable)
