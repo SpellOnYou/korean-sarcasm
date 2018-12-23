@@ -4,8 +4,10 @@
 
 /res/*
 !/res/datasets/
-/res/datasets/*
-!/res/datasets/jiwon/
+/res/datasets/jiwon/original/
+
+!/res/datasets/jiwon/*.txt
+
 # this is wrong git condition !/res/datasets/jiwon*
 
 
