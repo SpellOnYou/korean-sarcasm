@@ -1,7 +1,7 @@
 /images/*
 /models/*
 /plots/*
-/\.idea/*
+/.idea/*
 /res/*
 !/res/datasets/
 /res/datasets/jiwon/original/
