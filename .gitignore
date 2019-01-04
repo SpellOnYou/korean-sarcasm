@@ -1,7 +1,7 @@
 /images/*
 /models/*
 /plots/*
-
+/\.idea/*
 /res/*
 !/res/datasets/
 /res/datasets/jiwon/original/
@@ -18,7 +18,7 @@
 #!src/utils.py
 #!src/extract_baseline_features.py
 
-/.idea/*
+
 /stats/original_vs_grammatical.txt
 project_log.txt
 README_cp.md
