@@ -3,6 +3,14 @@
 [<img src="https://media1.tenor.com/images/03437a3a7a4a9084caecf563850e3569/tenor.gif?itemid=9054712">](https://media1.tenor.com/)
 
 * Why this name? **Pikasm** is blend word, pikachu + sarcasm
+
+
+    * dataset : (1) user anonymous (2) removed hashtag and made label (3) devided train and test, with 1:1 portion (4) Used nltk.TweetTokenizer, detail : this repository[]()
+    
+    
+    ![image](/res/images/pipeline_clean_tokens.png)
+    
+    
     * See also
         * [[Amalgamation (names)]](https://en.wikipedia.org/wiki/Blend_word)
         * [[Clipping (morphology)]](https://en.wikipedia.org/wiki/Clipping_(morphology))
