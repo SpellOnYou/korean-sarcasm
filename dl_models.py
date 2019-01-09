@@ -1,6 +1,6 @@
 import os, time, utils
 import numpy as np
-import data_processing as data_proc
+import preprocess as data_proc
 from keras.models import Model, Sequential
 from keras.optimizers import Adam
 from keras.layers import Dense, Dropout, Flatten, LSTM, GRU, Bidirectional, Input, Multiply

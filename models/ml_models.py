@@ -3,7 +3,7 @@ from sklearn import preprocessing
 import extract_baseline_features
 import extract_ml_features as extract_features
 import utils, classifiers
-import data_processing as data_proc
+import preprocess as data_proc
 
 
 # Settings for the up-coming ML model

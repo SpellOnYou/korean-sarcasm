@@ -4,7 +4,7 @@ from nltk import PorterStemmer, ngrams
 from nltk.stem.wordnet import WordNetLemmatizer
 from gensim.models import LdaModel
 from gensim.corpora import MmCorpus, Dictionary
-import data_processing as data_proc
+import preprocess as data_proc
 import vocab_helpers as helper
 import pandas as pd
 

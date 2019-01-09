@@ -5,7 +5,7 @@ from nltk import ngrams
 from nltk.stem.wordnet import WordNetLemmatizer
 from gensim.models import LdaModel
 from gensim.corpora import MmCorpus, Dictionary
-import data_processing as data_proc
+import preprocess as data_proc
 import utils
 import vocab_helpers as helper
 from tqdm import tqdm

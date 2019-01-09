@@ -1,5 +1,5 @@
 import os, time, random, utils
-import data_processing as data_proc
+import preprocess as data_proc
 from nltk.stem.wordnet import WordNetLemmatizer
 import matplotlib.pyplot as plt
 from gensim.models import LdaModel

@@ -1,5 +1,5 @@
 import os, utils
-import data_processing as data_proc
+import preprocess as data_proc
 
 
 # Make a simple analysis of the key-features picked by models trained on embeddings (works for both emojis and words)
