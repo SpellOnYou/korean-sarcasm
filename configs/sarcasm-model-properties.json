@@ -1,0 +1,7 @@
+{
+  "data_dir": "data/jiwon",
+  "data_type": "tokens",
+  "train_path": "train.txt",
+  "test_path": "test.txt",
+  "model_path": "model",
+}
