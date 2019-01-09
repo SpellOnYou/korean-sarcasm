@@ -1,4 +1,4 @@
-from tf_attention import *
+from tf_attention_models import *
 
 batch_ph, target_ph, seq_len_ph, keep_prob_ph, alphas, loss, accuracy, optimizer, merged, \
 train_batch_generator, test_batch_generator, session_conf, saver = build_attention_model()
