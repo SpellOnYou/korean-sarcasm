@@ -7,14 +7,6 @@ import pandas as pd
 import emoji
 import utils
 
-# from vocab_helpers import contractions, implicit_emoticons, slang, \
-#     wikipedia_emoticons, emotiocons_to_emojis
-
-# path = os.getcwd()[:os.getcwd().rfind('/')]
-path = '/Users/hapkim/Desktop/Sarcasm-Detection'
-dict_filename = "word_list.txt"
-word_filename = "word_list_freq.txt"
-
 def get_morphems(morpheme):
     mp = morpheme.split(';')
     out_list = []

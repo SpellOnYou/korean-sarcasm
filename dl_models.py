@@ -17,7 +17,7 @@ from keras.utils import plot_model
 from numpy.random import seed
 seed(1337603)
 
-
+path = '/Users/hapkim/Desktop/Sarcasm/git_sarcasm-korean2'
 # Fit and evaluate a simple feed-forward neural network model to analyse the improvements (or not) on BoW/embeddings
 def nn_bow_model(x_train, y_train, x_test, y_test, results, mode,
                  epochs=15, batch_size=32, hidden_units=50, save=False, plot_graph=False):
@@ -322,27 +322,27 @@ if __name__ == "__main__":
     y_test = test_labels
 
     # Make and print the settings for the DL model
-	max_len = utils.get_max_len_info(train_data)
-	emb_types = ['keras', 'glove', 'random']
-	trainable = True
-	plot = True
-	shuffle = False
-	epochs = 50
-	batch_size = 256
-	embedding_dim = 300
-	hidden_units = 256
-	dropout = 0.3
+	# max_len = utils.get_max_len_info(train_data)
+	# emb_types = ['keras', 'glove', 'random']
+	# trainable = True
+	# plot = True
+	# shuffle = False
+	# epochs = 50
+	# batch_size = 256
+	# embedding_dim = 300
+	# hidden_units = 256
+	# dropout = 0.3
 
-    for emb_type in emb_types:
-        utils.print_settings(max_len, embedding_dim, hidden_units, epochs, batch_size, dropout, emb_type, trainable)
-        if shuffle:
-            print("DATA HAS BEEN SHUFFLED.")
-        else:
-            print("Data is in its normal order (NO shuffling).")
+	# for emb_type in emb_types:
+ #        utils.print_settings(max_len, embedding_dim, hidden_units, epochs, batch_size, dropout, emb_type, trainable)
+ #        if shuffle:
+ #            print("DATA HAS BEEN SHUFFLED.")
+ #        else:
+ #            print("Data is in its normal order (NO shuffling).")
 
-        # List of the models to be analysed
-        models = ['Standard', 'LSTM', 'Attention']
+ #        # List of the models to be analysed
+ #        models = ['Standard', 'LSTM', 'Attention']
 
-        # Run model
-        run_dl_analysis(train_data, test_data, y_train, y_test, path, shuffle, max_len, emb_type,
-                        trainable, plot, models, epochs, batch_size, embedding_dim, hidden_units, dropout)
+ #        # Run model
+ #        run_dl_analysis(train_data, test_data, y_train, y_test, path, shuffle, max_len, emb_type,
+ #                        trainable, plot, models, epochs, batch_size, embedding_dim, hidden_units, dropout)

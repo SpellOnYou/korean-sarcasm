@@ -12,10 +12,11 @@ from collections import Counter, OrderedDict
 from pandas import read_csv
 from numpy.random import seed, shuffle
 import pandas as pd
+import json
 
-@classmethod
-def from_json(cls, file): # load config from json file
-    return cls(**json.load(open(file, "r")))
+# @classmethod
+def from_json(file_path): # load config from json file
+    return json.load(open(file_path, "r"))
 
 def load_file(filename):
 		file = open(filename, 'r')
@@ -688,3 +689,17 @@ def initialize_writer(file_path):
 	fout = open(file_path, 'a')
 	sys.stdout = writer(sys.stdout, fout)
 	print("\n\n > Current date and time: %s\n" % str(datetime.datetime.now()))
+
+
+def get_max_len_info(tweets, average=False):
+		# sum_of_length = sum([tkr.tokenize(l) for l in tweets])
+		sum_of_length = sum([len(str(l).split()) for l in tweets])
+		avg_tweet_len = sum_of_length / float(len(tweets))
+		
+		print("Mean of train tweets: ", avg_tweet_len)
+		max_tweet_len = len(tkr.tokenize(max(str(tweets), key=len)))
+		print("Max tweet length is = ", max_tweet_len)
+		if average:
+				return avg_tweet_len
+		return max_tweet_len
+			

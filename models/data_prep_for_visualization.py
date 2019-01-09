@@ -12,17 +12,6 @@ from keras.layers import Dense, Flatten
 from keras.models import Sequential
 from visualize_hidden_units import get_activations, visualize_activations
 
-# Define some parameters
-MODEL_PATH = os.getcwd()[:os.getcwd().rfind('/')] + '/models/dnn_models/vis_checkpoints/'
-BATCH_SIZE = 256
-EPOCHS = 10
-EMBEDDING_DIM = 32
-HIDDEN_UNITS = 32
-DENSE_UNITS = 128
-NO_OF_CLASSES = 2
-SHUFFLE = False
-
-
 # Prepare data for visualizations (attention and lstm)
 def prepare_data(shuffle=False, labels_to_categorical=True):
     path = os.getcwd() # run the source code from parent folder
