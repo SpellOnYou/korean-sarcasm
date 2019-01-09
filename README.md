@@ -4,56 +4,56 @@
 
 * Why this name? **Pikasm** is blend word, pikachu + sarcasm
 
+## Data
+ - ghosh: This english dataset collected by Aniruddha Ghosh and Tony Veale. See their [repository](https://github.com/AniSkywalker/SarcasmDetection) and [paper, Fracking Sarcasm using Neural Network](http://www.aclweb.org/anthology/W16-0425)
 
-    * dataset : (1) user anonymous (2) removed hashtag and made label (3) devided train and test, with 1:1 portion (4) Used nltk.TweetTokenizer, detail : this repository[]()
+- jiwon : This is korean data. Queries for hashtags such as **역설, 아무말, 운수좋은날, 笑, 뭐래 아닙니다, 그럴리없다, 어그로, irony sarcastic, sarcasm** yielded my corpora. And I preprocessed dataset (1) user anonymous (2) removing hashtag (3) removing url process.
     
+    ![image](/images/pipeline_clean_tokens.png)
     
-    ![image](/res/images/pipeline_clean_tokens.png)
-    
-    
-    * See also
-        * [[Amalgamation (names)]](https://en.wikipedia.org/wiki/Blend_word)
-        * [[Clipping (morphology)]](https://en.wikipedia.org/wiki/Clipping_(morphology))
-        * [[Compound (linguistics)]](https://en.wikipedia.org/wiki/Compound_(linguistics))
-        * [[Conceptual blending]](https://en.wikipedia.org/wiki/Conceptual_blending)
-        * [[Hybrid word]](https://en.wikipedia.org/wiki/Hybrid_word)
-        * [[Phonestheme]](https://en.wikipedia.org/wiki/Phonestheme)
-        * [[Phono-semantic matching]](https://en.wikipedia.org/wiki/Phono-semantic_matching)
-        * [[Portmanteau]](https://en.wikipedia.org/wiki/Portmanteau)
-        * [[Syllabic abbreviation]](https://en.wikipedia.org/wiki/Syllabic_abbreviation)
-
-
+If you have any other questions with corpus, plz email me
+        
 * Pikasm is compatible with: Python 2.7-3.6.
 
-#### Overview
+## Overview
 
-* [source code](/src)
-    * extract_base_line
-    * preprocess
-    * rule_based
-    * utils
-    
-* [resources](/res)
-* [statistics of model](/stats)
+This contains 9 python files. (It is still being added)
+- [`bag_of_words.py`](./bag_of_words.py) : 
+- [`classifiers.py`](./classifiers.py) : 
+- [`dl_models.py`](./dl_models.py) : Model classes for a general transformer
+- [`tf_attention_models.py`](./tf_attention_models.py) : Tensorflow attentive rnn model
+- [`preprocess`](./preprocess.py) : 
+- [`utils.py`](./utils.py) : Several utility functions
 
-#### List of requirements
-* [Python](https://www.python.org/downloads/) 3.5
-* [Keras](https://github.com/fchollet/keras) 2.0
-* [Tensorflow](https://www.tensorflow.org/install/) 1.3
-* [gensim](https://github.com/RaRe-Technologies/gensim) 3.0 
-* [numpy](https://github.com/numpy/numpy) 1.13
-* [scikit-learn](https://github.com/scikit-learn/scikit-learn)
-* [h5py](https://github.com/h5py/h5py)
-* [emoji](https://github.com/carpedm20/emoji)
-* [tqdm](https://github.com/tqdm/tqdm)
-* [pandas](https://github.com/pandas-dev/pandas)
-* [itertools](https://pypi.python.org/pypi/more-itertools) 
-* [matplotlib](https://github.com/matplotlib/matplotlib)
+## Example Usage
 
-#### Reference
+### Hierarchical Attention Networks
 
-#### Todo
+If you want your data, you can use it.
 
-- git large file storage
+```
+export DATA_DIR=/path/to/data
+export PREP_DIR=/path/to/preprocess
+export SAVE_DIR=/path/to/save
 
+python tf_attention_models.py \
+    --mode train \
+    --model_cfg config/attention_base.json \
+    --data_file $DATA_DIR/jiwon/train.csv \
+    --test_file $DATA_DIR/jiwon/test.csv \
+    --pretrain_file $BERT_PRETRAIN \
+    --vocab PREP_DIR/vocab.txt \
+    --save_dir $SAVE_DIR \
+    --max_len 128
+```
 
+## See also
+
+### linguistic, computer science related to sarcasm
+   * [universal irony detection model with czech](https://pdfs.semanticscholar.org/0c27/64756299a82659605b132aef9159f61a4171.pdf)
+   * [Chinese and attentive-RNN](https://link.springer.com/chapter/10.1007/978-3-319-56608-5_45)
+   * [Focus on meaning conflict with hashtags](https://www.researchgate.net/publication/255729692_The_perfect_solution_for_detecting_sarcasm_in_tweets_not)
+   
+   Implementation as proposed by Yang et al. in "Hierarchical Attention Networks for Document Classification" (2016)
+   
+>>>>>>> 682e36ff5706963e2ff13b76ed53144164920910
