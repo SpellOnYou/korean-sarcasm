@@ -1,0 +1,7 @@
+{
+  "data_dir": "data/jiwon",
+  "save_dir": "save",
+  "train_path": "train.csv",
+  "test_path": "test.csv",
+  "model_path": "model"
+}
