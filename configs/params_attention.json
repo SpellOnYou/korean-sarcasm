@@ -6,3 +6,4 @@
 "DENSE_UNITS": 128,
 "NO_OF_CLASSES": 2,
 "SHUFFLE": null, //false
+}
