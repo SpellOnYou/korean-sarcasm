@@ -21,7 +21,7 @@ This contains 9 python files. (It is still being added)
 - [`bag_of_words.py`](./bag_of_words.py) : 
 - [`classifiers.py`](./classifiers.py) : 
 - [`dl_models.py`](./dl_models.py) : Model classes for a general transformer
-- [`tf_attention_models.py`](./tf_attention_models.py) : Implementation as proposed by Yang et al. in "Hierarchical Attention Networks for Document Classification" (2016)
+- [`tf_attention_models.py`](./tf_attention_models.py) : Tensorflow attentive rnn model
 - [`preprocess`](./preprocess.py) : 
 - [`utils.py`](./utils.py) : Several utility functions
 
@@ -53,4 +53,6 @@ python tf_attention_models.py \
    * [universal irony detection model with czech](https://pdfs.semanticscholar.org/0c27/64756299a82659605b132aef9159f61a4171.pdf)
    * [Chinese and attentive-RNN](https://link.springer.com/chapter/10.1007/978-3-319-56608-5_45)
    * [Focus on meaning conflict with hashtags](https://www.researchgate.net/publication/255729692_The_perfect_solution_for_detecting_sarcasm_in_tweets_not)
+   
+   Implementation as proposed by Yang et al. in "Hierarchical Attention Networks for Document Classification" (2016)
    
