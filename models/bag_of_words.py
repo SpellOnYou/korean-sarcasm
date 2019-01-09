@@ -3,31 +3,6 @@ from utils import run_supervised_learning_models
 from dl_models import nn_bow_model
 from pandas import DataFrame
 
-
-path = os.getcwd()[:os.getcwd().rfind('/')]
-to_write_filename = path + '/stats/bag_of_words_analysis.txt'
-utils.initialize_writer(to_write_filename)
-
-train_filename = "train.txt"
-test_filename = "test.txt"
-tokens_filename = "clean_original_"
-data_path = path + "/res/tokens/tokens_"
-
-# Load the data
-train_tweets = utils.load_file(data_path + tokens_filename + train_filename)
-test_tweets = utils.load_file(data_path + tokens_filename + test_filename)
-
-# Make sure all words are lower-case
-x_train = [t.lower() for t in train_tweets]
-x_test = [t.lower() for t in test_tweets]
-
-# Load the labels
-y_train = [int(l) for l in utils.load_file(path + "/res/datasets/ghosh/labels_" + train_filename)]
-y_test = [int(l) for l in utils.load_file(path + "/res/datasets/ghosh/labels_" + test_filename)]
-
-modes = ['binary', 'count', 'tfidf', 'freq']
-results = DataFrame()
-
 # For each selection-mode, make a BoW analysis using both SVMs and a simple feed-forward NN
 for mode in modes:
     utils.print_model_title("BoW Analysis for Mode %s" % mode)
