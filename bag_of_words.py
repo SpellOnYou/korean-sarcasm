@@ -27,6 +27,7 @@ class BOW():
             print("BoW for %s mode completion time: %.3f s = %.3f min" % (mode, (end - start), (end - start) / 60.0))
         # utils.boxplot_results(results, "bow_nn_boxplot.png")
 
+
 def main(envir_var='config/env_vars.json',
     train_file='data/jiwon/train.csv',
     test_file='data/jiwon/test.csv',

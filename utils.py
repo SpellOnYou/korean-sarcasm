@@ -13,9 +13,20 @@ from pandas import read_csv
 from numpy.random import seed, shuffle
 import pandas as pd
 import json
+import config
+
+
+def Config(dbname):
+    if configname != config.MODEL_CONFIG['dbname']:
+        raise ValueError("Couldn't not find DB with given name")
+    conn = pymysql.connect(host=config.DATABASE_CONFIG['host'],
+                           user=config.DATABASE_CONFIG['user'],
+                           password=config.DATABASE_CONFIG['password'],
+                           db=config.DATABASE_CONFIG['dbname'])
+    return conn
 
 def from_json(file_path): # load config from json file
-    return json.load(open(file_path, "r"))
+		return json.load(open(file_path, "r"))
 
 def load_file(filename):
 		file = open(filename, 'r')

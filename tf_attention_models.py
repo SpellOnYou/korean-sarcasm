@@ -164,8 +164,7 @@ class Model(object):
 
                 print("loss: {:.3f}, val_loss: {:.3f}, acc: {:.3f}, val_acc: {:.3f}".format(
                     loss_train, loss_test, accuracy_train, accuracy_test))
-            saver.save(sess, MODEL_PATH)               
-
+            saver.save(sess, MODEL_PATH)
 
 def main(model_path="models/tf_attention",
     batch_size=50,
@@ -175,9 +174,7 @@ def main(model_path="models/tf_attention",
     attention_units=50,
     keep_prob=0.8,
     delta=0.5,
-    shuffle=False,
-    *args,
-    **kargs):
+    shuffle=False):
 
 if __name__ == '__main__':
     fire.Fire(main)
