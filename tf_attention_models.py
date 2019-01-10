@@ -106,8 +106,10 @@ class Model(object):
                train_batch_generator, test_batch_generator, session_conf, saver
 
 
-if __name__ == '__main__':
-    fire.Fire(main)
+
+
+
+def main()
     batch_ph, target_ph, seq_len_ph, keep_prob_ph, alphas, loss, accuracy, optimizer, merged, \
     train_batch_generator, test_batch_generator, session_conf, saver = build_attention_model()
 
@@ -164,3 +166,15 @@ if __name__ == '__main__':
             print("loss: {:.3f}, val_loss: {:.3f}, acc: {:.3f}, val_acc: {:.3f}".format(
                 loss_train, loss_test, accuracy_train, accuracy_test))
         saver.save(sess, MODEL_PATH)
+
+
+
+
+
+
+
+
+
+
+if __name__ == '__main__':
+    fire.Fire(main)
