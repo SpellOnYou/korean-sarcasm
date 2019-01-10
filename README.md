@@ -4,6 +4,8 @@
 
 * Why this name? **Pikasm** is blend word, pikachu + sarcasm
 
+## I'm strongly inspired by [MirunaPislar](https://github.com/MirunaPislar/Sarcasm-Detection)'s code and I referred a lot to that codes, but I tried to make my codes more pythonic and pytorchic style. Actually, I am still modifying the code.
+
 ## Data
  - ghosh: This english dataset collected by Aniruddha Ghosh and Tony Veale. See their [repository](https://github.com/AniSkywalker/SarcasmDetection) and [paper, Fracking Sarcasm using Neural Network](http://www.aclweb.org/anthology/W16-0425)
 
