@@ -3,6 +3,11 @@ import os
 import numpy as np
 import tensorflow as tf
 import fire
+import logging ## library for print information about argparse
+import argparse
+import ConfigParser as configparser
+# from paste.deploy.converters import asbool, asint, aslist
+
 
 from tensorflow.contrib.rnn import GRUCell
 from tensorflow.python.ops.rnn import bidirectional_dynamic_rnn as bi_rnn
@@ -47,7 +52,6 @@ class Model(object):
             return output
         else:
             return output, alphas
-
 
     def build_attention_model():
         # Different placeholders
@@ -105,76 +109,75 @@ class Model(object):
         return batch_ph, target_ph, seq_len_ph, keep_prob_ph, alphas, loss, accuracy, optimizer, merged, \
                train_batch_generator, test_batch_generator, session_conf, saver
 
-
-
-
-
-def main()
+    def save_model():
     batch_ph, target_ph, seq_len_ph, keep_prob_ph, alphas, loss, accuracy, optimizer, merged, \
     train_batch_generator, test_batch_generator, session_conf, saver = build_attention_model()
+        with tf.Session(config=session_conf) as sess:
+            sess.run(tf.global_variables_initializer())
+            print("Start learning...")
+            for epoch in range(EPOCHS):
+                loss_train = 0
+                loss_test = 0
+                accuracy_train = 0
+                accuracy_test = 0
 
-    with tf.Session(config=session_conf) as sess:
-        sess.run(tf.global_variables_initializer())
-        print("Start learning...")
-        for epoch in range(EPOCHS):
-            loss_train = 0
-            loss_test = 0
-            accuracy_train = 0
-            accuracy_test = 0
+                # Training
+                num_batches = X_train.shape[0] // BATCH_SIZE
+                for b in tqdm(range(num_batches)):
+                    x_batch, y_batch = next(train_batch_generator)
+                    seq_lists = []
+                    for x in x_batch:
+                        if 0 not in list(x):
+                            seq_lists.append(SEQUENCE_LENGTH)
+                        else:
+                            seq_lists.append(list(x).index(0) + 1)
+                    seq_len = np.array(seq_lists)
+                    loss_tr, acc, _, summary = sess.run([loss, accuracy, optimizer, merged],
+                                                        feed_dict={batch_ph: x_batch,
+                                                                   target_ph: y_batch,
+                                                                   seq_len_ph: seq_len,
+                                                                   keep_prob_ph: KEEP_PROB})
+                    accuracy_train += acc
+                    loss_train = loss_tr * DELTA + loss_train * (1 - DELTA)
+                accuracy_train /= num_batches
 
-            # Training
-            num_batches = X_train.shape[0] // BATCH_SIZE
-            for b in tqdm(range(num_batches)):
-                x_batch, y_batch = next(train_batch_generator)
-                seq_lists = []
-                for x in x_batch:
-                    if 0 not in list(x):
-                        seq_lists.append(SEQUENCE_LENGTH)
-                    else:
-                        seq_lists.append(list(x).index(0) + 1)
-                seq_len = np.array(seq_lists)
-                loss_tr, acc, _, summary = sess.run([loss, accuracy, optimizer, merged],
-                                                    feed_dict={batch_ph: x_batch,
-                                                               target_ph: y_batch,
-                                                               seq_len_ph: seq_len,
-                                                               keep_prob_ph: KEEP_PROB})
-                accuracy_train += acc
-                loss_train = loss_tr * DELTA + loss_train * (1 - DELTA)
-            accuracy_train /= num_batches
+                # Testing
+                num_batches = X_test.shape[0] // BATCH_SIZE
+                for batch in tqdm(range(num_batches)):
+                    x_batch, y_batch = next(test_batch_generator)
+                    seq_lists = []
+                    for x in x_batch:
+                        if 0 not in list(x):
+                            seq_lists.append(SEQUENCE_LENGTH)
+                        else:
+                            seq_lists.append(list(x).index(0) + 1)
+                    seq_len = np.array(seq_lists)
+                    loss_test_batch, acc, summary = sess.run([loss, accuracy, merged],
+                                                             feed_dict={batch_ph: x_batch,
+                                                                        target_ph: y_batch,
+                                                                        seq_len_ph: seq_len,
+                                                                        keep_prob_ph: 1.0})
+                    accuracy_test += acc
+                    loss_test += loss_test_batch
+                accuracy_test /= num_batches
+                loss_test /= num_batches
 
-            # Testing
-            num_batches = X_test.shape[0] // BATCH_SIZE
-            for batch in tqdm(range(num_batches)):
-                x_batch, y_batch = next(test_batch_generator)
-                seq_lists = []
-                for x in x_batch:
-                    if 0 not in list(x):
-                        seq_lists.append(SEQUENCE_LENGTH)
-                    else:
-                        seq_lists.append(list(x).index(0) + 1)
-                seq_len = np.array(seq_lists)
-                loss_test_batch, acc, summary = sess.run([loss, accuracy, merged],
-                                                         feed_dict={batch_ph: x_batch,
-                                                                    target_ph: y_batch,
-                                                                    seq_len_ph: seq_len,
-                                                                    keep_prob_ph: 1.0})
-                accuracy_test += acc
-                loss_test += loss_test_batch
-            accuracy_test /= num_batches
-            loss_test /= num_batches
-
-            print("loss: {:.3f}, val_loss: {:.3f}, acc: {:.3f}, val_acc: {:.3f}".format(
-                loss_train, loss_test, accuracy_train, accuracy_test))
-        saver.save(sess, MODEL_PATH)
-
+                print("loss: {:.3f}, val_loss: {:.3f}, acc: {:.3f}, val_acc: {:.3f}".format(
+                    loss_train, loss_test, accuracy_train, accuracy_test))
+            saver.save(sess, MODEL_PATH)               
 
 
-
-
-
-
-
-
+def main(model_path="models/tf_attention",
+    batch_size=50,
+    epochs=2,
+    embedding_dim=100,
+    hiddin_units=150,
+    attention_units=50,
+    keep_prob=0.8,
+    delta=0.5,
+    shuffle=False,
+    *args,
+    **kargs):
 
 if __name__ == '__main__':
     fire.Fire(main)

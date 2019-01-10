@@ -14,7 +14,6 @@ from numpy.random import seed, shuffle
 import pandas as pd
 import json
 
-# @classmethod
 def from_json(file_path): # load config from json file
     return json.load(open(file_path, "r"))
 

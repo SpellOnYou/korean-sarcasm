@@ -28,11 +28,12 @@ class BOW():
         # utils.boxplot_results(results, "bow_nn_boxplot.png")
 
 def main(envir_var='config/env_vars.json',
-    model_info='config/attention.json',
     train_file='data/jiwon/train.csv',
-    test_file='data/jiwon/test.csv'):
+    test_file='data/jiwon/test.csv',
+    *arg,
+    **kargs):
     
-    #load configure file
+    #load configure file if user give
     cfg = utils.from_json(envir_var)
     
     inst = BOW(train_file, test_file)

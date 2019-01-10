@@ -1,2 +1,5 @@
 /models/*
 /images/*
+main.py
+/config/*
+__pycache__/*
