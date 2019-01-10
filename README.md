@@ -55,5 +55,4 @@ python tf_attention_models.py \
    * [Focus on meaning conflict with hashtags](https://www.researchgate.net/publication/255729692_The_perfect_solution_for_detecting_sarcasm_in_tweets_not)
    
    Implementation as proposed by Yang et al. in "Hierarchical Attention Networks for Document Classification" (2016)
-   
->>>>>>> 682e36ff5706963e2ff13b76ed53144164920910
+  
