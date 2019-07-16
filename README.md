@@ -2,8 +2,6 @@ This Document is now ongoing project
 
 ### Kocasm : korean sarcasm detector on twitter : And i love pikachu
 
-[<img src="https://media1.tenor.com/images/03437a3a7a4a9084caecf563850e3569/tenor.gif?itemid=9054712">](https://media1.tenor.com/)
-
 * Why this name? **Kocasm** is blend word, Korean + sarcasm
 
 #### I'm strongly inspired by [MirunaPislar](https://github.com/MirunaPislar/Sarcasm-Detection)'s code and I referred a lot to that codes, but I tried to make my codes more pythonic and pytorchic style. Actually, I am still modifying the code.
