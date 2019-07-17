@@ -1,21 +1,21 @@
-This Document is now ongoing project
+
 
 [<img src="https://media1.tenor.com/images/03437a3a7a4a9084caecf563850e3569/tenor.gif?itemid=9054712">](https://media1.tenor.com/)
 
-### Kocasm : korean sarcasm detector on twitter : And i love pikachu
+### Kocasm : korean automatic sarcasm detection
+- data gathered from twitter
 
-* Why this name? **Kocasm** is blend word, Korean + sarcasm
+- Why this name? **Kocasm** is blend word, Korean + sarcasm
 
-#### I'm strongly inspired by [MirunaPislar](https://github.com/MirunaPislar/Sarcasm-Detection)'s code and I referred a lot to that codes, but I tried to make my codes more pythonic and pytorchic style. Actually, I am still modifying the code.
+- I'm strongly inspired by [MirunaPislar](https://github.com/MirunaPislar/Sarcasm-Detection)'s code and I referred a lot to that codes, but I tried to make my codes more pythonic and pytorchic style. Actually, I am still modifying the code.
 
 ## Data
  - ghosh: This english dataset collected by Aniruddha Ghosh and Tony Veale. See their [repository](https://github.com/AniSkywalker/SarcasmDetection) and [paper, Fracking Sarcasm using Neural Network](http://www.aclweb.org/anthology/W16-0425)
 
 - jiwon : This is korean data. Queries for hashtags such as **역설, 아무말, 운수좋은날, 笑, 뭐래 아닙니다, 그럴리없다, 어그로, irony sarcastic, sarcasm** yielded my corpora. And I preprocessed dataset (1) user anonymous (2) removing hashtag (3) removing url process.
+![image](/images/pipeline_clean_tokens.png)
     
-    ![image](/images/pipeline_clean_tokens.png)
-    
-If you have any other questions with corpus, plz email me
+If you have any other questions with corpus, please contacts me
         
 * Pikasm is compatible with: Python 2.7-3.6.
 
