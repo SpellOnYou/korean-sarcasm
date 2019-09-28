@@ -17,7 +17,7 @@ from keras.utils import plot_model
 from numpy.random import seed
 seed(1337603)
 
-path = '/Users/hapkim/Desktop/Sarcasm/git_sarcasm-korean2'
+save_path = os.path.abspath('.')
 # Fit and evaluate a simple feed-forward neural network model to analyse the improvements (or not) on BoW/embeddings
 def nn_bow_model(x_train, y_train, x_test, y_test, results, mode,
                  epochs=15, batch_size=32, hidden_units=50, save=False, plot_graph=False):
@@ -46,8 +46,8 @@ def nn_bow_model(x_train, y_train, x_test, y_test, results, mode,
     print("%d examples predicted 0." % np.sum(0 == np.array(y_pred)))
 
     if save:
-        json_name = path + "/models/bow_models/json_bow_" + mode + "_mode.json"
-        h5_weights_name = path + "/models/bow_models/h5_bow_" + mode + "_mode.json"
+        json_name = save_path + "/models/bow_models/json_bow_" + mode + "_mode.json"
+        h5_weights_name = save_fpath + "/models/bow_models/h5_bow_" + mode + "_mode.json"
         utils.save_model(model, json_name=json_name, h5_weights_name=h5_weights_name)
 
 
