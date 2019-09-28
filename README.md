@@ -17,17 +17,17 @@
     
 If you have any other questions with corpus, please contacts me
         
-* Pikasm is compatible with: Python 2.7-3.6.
+* Pikasm is compatible with: Python 2.7-3.7
 
 ## Overview
 
 This contains 9 python files. (It is still being added)
-- [`bag_of_words.py`](./bag_of_words.py) : 
-- [`classifiers.py`](./classifiers.py) : 
-- [`dl_models.py`](./dl_models.py) : Model classes for a general transformer
-- [`tf_attention_models.py`](./tf_attention_models.py) : Tensorflow attentive rnn model
-- [`preprocess`](./preprocess.py) : 
-- [`utils.py`](./utils.py) : Several utility functions
+- [`bag_of_words.py`](https://github.com/SpellOnYou/korean-sarcasm/blob/master/models/bag_of_words.py) : 
+- [`classifiers.py`](https://github.com/SpellOnYou/korean-sarcasm/blob/master/models/classifiers.py) : 
+- [`dl_models.py`](https://github.com/SpellOnYou/korean-sarcasm/blob/master/models/dl_models.py) : Model classes for a general transformer
+- [`tf_attention_models.py`](https://github.com/SpellOnYou/korean-sarcasm/blob/master/models/tf_attention_models.py) : Tensorflow attentive rnn model
+- [`preprocess`](https://github.com/SpellOnYou/korean-sarcasm/blob/master/models/preprocess.py) : 
+- [`utils.py`](https://github.com/SpellOnYou/korean-sarcasm/blob/master/models/utils.py) : Several utility functions
 
 ## Example Usage
 
