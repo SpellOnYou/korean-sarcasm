@@ -10,7 +10,7 @@
 
 - HTML data gathered from a twitter
 - korean data, queries for hashtags such as **역설, 아무말, 운수좋은날, 笑, 뭐래 아닙니다, 그럴리없다, 어그로, irony sarcastic, sarcasm** yielded my corpora. And I preprocessed dataset (1) user anonymous (2) removing hashtag (3) removing url process.
-<img src="https://github.com/SpellOnYou/korean-sarcasm/blob/master/img/pipeline_clean_tokens.png" width="400" height="800" alt="preprocessing-pipeline" >
+<img src="https://github.com/SpellOnYou/korean-sarcasm/blob/master/img/pipeline_clean_tokens.png" width="500" height="700" alt="preprocessing-pipeline" >
 If you have any other questions with corpus, please contacts me
 
  - ghosh: This english dataset collected by Aniruddha Ghosh and Tony Veale. See their [repository](https://github.com/AniSkywalker/SarcasmDetection) and [paper, Fracking Sarcasm using Neural Network](http://www.aclweb.org/anthology/W16-0425)
