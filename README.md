@@ -27,9 +27,7 @@ If you want to compare with other dataset, refer: [English] </br>
 * Pikasm is compatible with: Python 2.7-3.7
 
 
-### Hierarchical Attention Networks
-
-If you want your own data, you can use it.
+### In case with your own data, clone this repository and...
 
 ```
 export DATA_DIR=/path/to/data
