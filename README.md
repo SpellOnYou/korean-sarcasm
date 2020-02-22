@@ -1,7 +1,3 @@
-
-
-[<img src="https://media1.tenor.com/images/03437a3a7a4a9084caecf563850e3569/tenor.gif?itemid=9054712">](https://media1.tenor.com/)
-
 ## Kocasm : korean automatic sarcasm detection
 
 - Why this name? **Kocasm** is blend word, Korean + sarcasm
