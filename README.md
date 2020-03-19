@@ -5,9 +5,10 @@
 ### Preparing the data
 
 - HTML data gathered from a twitter
-- korean data, queries for hashtags such as **역설, 아무말, 운수좋은날, 笑, 뭐래 아닙니다, 그럴리없다, 어그로, irony sarcastic, sarcasm** yielded my corpora. And I preprocessed dataset (1) user anonymous (2) removing hashtag (3) removing url process.
+- korean data, queries for hashtags such as **역설, 아무말, 운수좋은날, 笑, 뭐래 아닙니다, 그럴리없다, 어그로, irony sarcastic, sarcasm** was labeled as True data.(so still has lots of noise)
+- And pre-processed dataset (1) user anonymous (2) removing hashtag (3) removing url process.
 <img src="https://github.com/SpellOnYou/korean-sarcasm/blob/master/img/pipeline_clean_tokens.png" width="500" height="700" alt="preprocessing-pipeline" >
-If you have any other questions with corpus, please contacts me</br>
+If you have any other questions with corpus, please contacts me</br>- jiwon.kim.096@gmail.com
 
 If you want to compare with other dataset, refer: [English] </br>
 
@@ -18,9 +19,9 @@ If you want to compare with other dataset, refer: [English] </br>
 - [`bag_of_words.py`](https://github.com/SpellOnYou/korean-sarcasm/blob/master/models/bag_of_words.py): Basic bayesian model
 - [`dl_models.py`](https://github.com/SpellOnYou/korean-sarcasm/blob/master/models/dl_models.py): Model classes for a general transformer
 - [`tf_attention_models.py`](https://github.com/SpellOnYou/korean-sarcasm/blob/master/models/tf_attention_models.py) : Tensorflow attentive rnn model
-- I'm strongly inspired by [MirunaPislar](https://github.com/MirunaPislar/Sarcasm-Detection)'s code and I referred a lot to that codes, but I tried to make my codes more pythonic and pytorchic style. Actually, I am still modifying the code.
+* I'm strongly inspired by [MirunaPislar](https://github.com/MirunaPislar/Sarcasm-Detection)'s code and I referred a lot to that codes, but I tried to make my codes more pythonic and pytorchic style. Actually, I am still modifying the code.
         
-* Pikasm is compatible with: Python 2.7-3.7
+* Kokasm is compatible with: Python 2.7-3.7
 
 
 ### In case with your own data, clone this repository and...
