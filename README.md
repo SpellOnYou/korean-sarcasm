@@ -5,6 +5,8 @@
 ### Preparing the data
 
 - HTML data gathered from a twitter
+- Data is composed of label 1,0.
+  - label 1: sarcasm, label0: randomly gatherd
 - korean data, queries for hashtags such as **역설, 아무말, 운수좋은날, 笑, 뭐래 아닙니다, 그럴리없다, 어그로, irony sarcastic, sarcasm** was labeled as True data.(so still has lots of noise)
 - And pre-processed dataset (1) user anonymous (2) removing hashtag (3) removing url process.
 <img src="https://github.com/SpellOnYou/korean-sarcasm/blob/master/img/pipeline_clean_tokens.png" width="500" height="700" alt="preprocessing-pipeline" >
