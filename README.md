@@ -2,6 +2,10 @@
 
 - Why this name? **Kocasm** is blend word, Korean + sarcasm
 
+### Why Irony detection is important?
+
+Because it converts or distorts literal meaning of sentence, sarcasm is highly related to Sentiment Classification.
+
 ### Preparing the data
 
 - HTML data gathered from a twitter
@@ -53,3 +57,4 @@ python tf_attention_models.py \
    
    Implementation as proposed by Yang et al. in "Hierarchical Attention Networks for Document Classification" (2016)
   
+### Kaggle - [Twitter Inory Detection](https://www.aclweb.org/anthology/S18-1005/)
