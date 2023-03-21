@@ -48,6 +48,21 @@ python tf_attention_models.py \
     --max_len 128
 ```
 
+## Citation
+
+If you found this dataset useful, please cite as:
+
+```bibtex
+@misc{kim2019kocasm,
+  author = {Kim, Jiwon and Cho, Won Ik},
+  title = {Kocasm: Korean Automatic Sarcasm Detection},
+  year = {2019},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/SpellOnYou/korean-sarcasm}}
+}
+```
+
 ## See also
 
 ### linguistic, computer science related to sarcasm
@@ -58,3 +73,4 @@ python tf_attention_models.py \
    Implementation as proposed by Yang et al. in "Hierarchical Attention Networks for Document Classification" (2016)
   
 ### Kaggle - [Twitter Inory Detection](https://www.aclweb.org/anthology/S18-1005/)
+
